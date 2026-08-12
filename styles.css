@@ -608,7 +608,7 @@ main { padding-top: 78px; }
 .filter-pill.on-light.active { background: var(--gold-500); border-color: var(--gold-500); color: var(--navy-950); }
 
 .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px 32px; }
-.case-card .ba-frame { aspect-ratio: 4/3; }
+.case-card .ba-frame { aspect-ratio: 3/4; }
 .case-meta { margin-top: 16px; }
 .case-meta h3 { font-size: 16.5px; color: var(--cream); margin-bottom: 6px; }
 .case-meta p { font-size: 13px; color: var(--ink-100); line-height: 1.6; }
@@ -804,7 +804,8 @@ footer { background: var(--navy-950); color: var(--ink-100); padding: 64px 0 28p
 
 /* ---------- antes e depois: carrossel ---------- */
 
-.ba-carousel { position: relative; }
+.ba-carousel { position: relative; max-width: 420px; }
+.ba-carousel.wide { max-width: none; }
 .ba-track { overflow: hidden; border-radius: var(--radius-lg); }
 .ba-slides { display: flex; transition: transform 0.4s ease; }
 .ba-slide { flex: 0 0 100%; }
