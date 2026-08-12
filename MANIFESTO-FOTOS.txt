@@ -1,7 +1,3 @@
-barba-clinica-consulta.jpg  →  Sala de consulta
-barba-clinica-equipe.jpg  →  Equipe local em Altamira
-barba-clinica-procedimento.jpg  →  Sala de procedimento
-barba-clinica-recepcao.jpg  →  Recepção da clínica em Altamira
 barba-hero-consulta.jpg  →  Paciente em consulta com o Dr. Edmar Spindola, transplante de barba
 blog-o-que-e-tecnica-fue-capa.jpg  →  Detalhe da técnica FUE
 blog-o-que-e-tecnica-fue.jpg  →  Ilustração sobre a técnica FUE
@@ -16,34 +12,22 @@ casos-caso-03-antes.jpg  →  Antes do transplante capilar, caso 3
 casos-caso-03-depois.jpg  →  Resultado após o transplante capilar, caso 3
 casos-caso-04-antes.jpg  →  Antes do transplante capilar, caso 4
 casos-caso-04-depois.jpg  →  Resultado após o transplante capilar, caso 4
-clinica-altamira-clinica-consulta.jpg  →  Sala de consulta
-clinica-altamira-clinica-equipe.jpg  →  Equipe local em Altamira
-clinica-altamira-clinica-procedimento.jpg  →  Sala de procedimento
-clinica-altamira-clinica-recepcao.jpg  →  Recepção da clínica em Altamira
+clinica-consulta.jpg  →  Sala de consulta  (compartilhada: home, masculino, feminino, barba, sobrancelha, clinica-altamira)
+clinica-equipe.jpg  →  Equipe local em Altamira  (compartilhada: home, masculino, feminino, barba, sobrancelha, clinica-altamira)
+clinica-procedimento.jpg  →  Sala de procedimento  (compartilhada: home, masculino, feminino, barba, sobrancelha, clinica-altamira)
+clinica-recepcao.jpg  →  Recepção da clínica em Altamira  (compartilhada: home, masculino, feminino, barba, sobrancelha, clinica-altamira)
 equipe-dr-edmar-retrato.jpg  →  Dr. Edmar Spindola
-feminino-clinica-consulta.jpg  →  Sala de consulta
-feminino-clinica-equipe.jpg  →  Equipe local em Altamira
-feminino-clinica-procedimento.jpg  →  Sala de procedimento
-feminino-clinica-recepcao.jpg  →  Recepção da clínica em Altamira
 feminino-hero-consulta.jpg  →  Paciente em consulta com o Dr. Edmar Spindola, transplante capilar feminino
 home-caso-01-antes.jpg  →  Antes do transplante capilar
 home-caso-01-depois.jpg  →  12 meses após o transplante capilar
 home-caso-02-antes.jpg  →  Antes do transplante capilar
 home-caso-02-depois.jpg  →  9 meses após o transplante capilar
-home-clinica-consulta.jpg  →  Sala de consulta
-home-clinica-equipe.jpg  →  Equipe local em Altamira
-home-clinica-procedimento.jpg  →  Sala de procedimento
-home-clinica-recepcao.jpg  →  Recepção da clínica em Altamira
 home-hero-consulta.jpg  →  Dr. Edmar Spindola em consulta com paciente
 home-hero-explicando.jpg  →  Dr. Edmar Spindola explicando a técnica ao paciente
 home-tratamento-barba.jpg  →  Transplante de barba
 home-tratamento-feminino.jpg  →  Transplante capilar feminino
 home-tratamento-masculino.jpg  →  Transplante capilar masculino
 home-tratamento-sobrancelha.jpg  →  Transplante de sobrancelha
-masculino-clinica-consulta.jpg  →  Sala de consulta
-masculino-clinica-equipe.jpg  →  Equipe local em Altamira
-masculino-clinica-procedimento.jpg  →  Sala de procedimento
-masculino-clinica-recepcao.jpg  →  Recepção da clínica em Altamira
 masculino-hero-consulta.jpg  →  Paciente em consulta com o Dr. Edmar Spindola, transplante capilar masculino
 masculino-prova-caso-01-antes.jpg  →  Antes do transplante capilar, caso 1
 masculino-prova-caso-01-depois.jpg  →  Resultado após o transplante capilar, caso 1
@@ -56,9 +40,6 @@ metodos-fue-no-shave-card.jpg  →  Técnica FUE No-Shave
 metodos-fue-no-shave-hero.jpg  →  Detalhe da extração de folículos na técnica FUE No-Shave
 metodos-fue-tradicional-card.jpg  →  Técnica FUE Tradicional
 metodos-fue-tradicional-hero.jpg  →  Detalhe da extração de folículos na técnica FUE Tradicional
-sobrancelha-clinica-consulta.jpg  →  Sala de consulta
-sobrancelha-clinica-equipe.jpg  →  Equipe local em Altamira
-sobrancelha-clinica-procedimento.jpg  →  Sala de procedimento
-sobrancelha-clinica-recepcao.jpg  →  Recepção da clínica em Altamira
 sobrancelha-hero-consulta.jpg  →  Paciente em consulta com o Dr. Edmar Spindola, transplante de sobrancelha
+sobre-dr-edmar-spindola-altamira.jpg  →  Dr. Edmar Spindola em Altamira, PA  (compartilhada: home, masculino, feminino, barba, sobrancelha, edmar-spindola)
 sobre-hero-retrato.jpg  →  Dr. Edmar Spindola, retrato profissional
