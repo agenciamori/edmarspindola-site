@@ -1021,6 +1021,18 @@ footer { background: var(--navy-950); color: var(--ink-100); padding: 64px 0 28p
 @media (max-width: 900px) {
   .about-grid.video-above-cta { grid-template-areas: "text" "video" "cta"; }
 }
+/* variante pras seções de evolução (Home) e prova (Masculino): no desktop
+   texto/disclaimer/CTA ficam numa coluna e o slider na outra; no mobile a
+   ordem vira intro -> slider -> disclaimer -> CTA, sem ficar tudo empilhado
+   antes do slider. */
+.about-grid.evolution-layout { grid-template-areas: "intro media" "compliance media" "cta media"; align-items: start; }
+.about-grid.evolution-layout > .ev-intro { grid-area: intro; }
+.about-grid.evolution-layout > .ba-carousel { grid-area: media; }
+.about-grid.evolution-layout > .compliance-box { grid-area: compliance; }
+.about-grid.evolution-layout > .ev-cta { grid-area: cta; }
+@media (max-width: 900px) {
+  .about-grid.evolution-layout { grid-template-areas: "intro" "media" "compliance" "cta"; grid-template-columns: 1fr; }
+}
 .video-vertical {
   aspect-ratio: 9/16;
   border-radius: var(--radius-lg);
