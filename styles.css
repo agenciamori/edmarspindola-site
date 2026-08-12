@@ -435,7 +435,7 @@ main { padding-top: 78px; }
   border: 1px solid rgba(201,161,74,0.3);
   cursor: ew-resize;
   user-select: none;
-  touch-action: none;
+  touch-action: pan-y;
   box-shadow: var(--shadow-soft-dark);
 }
 .ba-side {
@@ -494,6 +494,7 @@ main { padding-top: 78px; }
   width: 0;
   z-index: 5;
   transform: translateX(-50%);
+  touch-action: none;
 }
 .ba-handle::before {
   content: '';

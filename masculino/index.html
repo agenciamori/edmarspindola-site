@@ -573,16 +573,17 @@ function initCompareFrame(frame) {
 
   setPosition(parseFloat(frame.dataset.start) || 50);
 
-  frame.addEventListener('pointerdown', e => {
+  handle.addEventListener('pointerdown', e => {
     dragging = true;
-    frame.setPointerCapture(e.pointerId);
+    handle.setPointerCapture(e.pointerId);
     setPositionFromEvent(e.clientX);
+    e.preventDefault();
   });
-  frame.addEventListener('pointermove', e => {
+  handle.addEventListener('pointermove', e => {
     if (dragging) setPositionFromEvent(e.clientX);
   });
   ['pointerup', 'pointercancel', 'pointerleave'].forEach(evt => {
-    frame.addEventListener(evt, () => { dragging = false; });
+    handle.addEventListener(evt, () => { dragging = false; });
   });
 }
 document.querySelectorAll('.ba-frame').forEach(initCompareFrame);
