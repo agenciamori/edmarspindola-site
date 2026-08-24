@@ -1,45 +1,45 @@
-barba-hero-consulta.jpg  →  Paciente em consulta com o Dr. Edmar Spindola, transplante de barba
-blog-o-que-e-tecnica-fue-capa.jpg  →  Detalhe da técnica FUE
-blog-o-que-e-tecnica-fue.jpg  →  Ilustração sobre a técnica FUE
-blog-quanto-tempo-cabelo-cresce.jpg  →  Fases da recuperação do transplante capilar
-blog-transplante-capilar-doi.jpg  →  Anestesia no transplante capilar
-blog-transplante-capilar-mulheres.jpg  →  Transplante capilar em mulheres
-casos-caso-01-antes.jpg  →  Antes do transplante capilar, caso 1
-casos-caso-01-depois.jpg  →  Resultado após o transplante capilar, caso 1
-casos-caso-02-antes.jpg  →  Antes do transplante capilar, caso 2
-casos-caso-02-depois.jpg  →  Resultado após o transplante capilar, caso 2
-casos-caso-03-antes.jpg  →  Antes do transplante capilar, caso 3
-casos-caso-03-depois.jpg  →  Resultado após o transplante capilar, caso 3
-casos-caso-04-antes.jpg  →  Antes do transplante capilar, caso 4
-casos-caso-04-depois.jpg  →  Resultado após o transplante capilar, caso 4
-clinica-consulta.jpg  →  Sala de consulta  (compartilhada: home, masculino, feminino, barba, sobrancelha, clinica-altamira)
-clinica-equipe.jpg  →  Equipe local em Altamira  (compartilhada: home, masculino, feminino, barba, sobrancelha, clinica-altamira)
-clinica-procedimento.jpg  →  Sala de procedimento  (compartilhada: home, masculino, feminino, barba, sobrancelha, clinica-altamira)
-clinica-recepcao.jpg  →  Recepção da clínica em Altamira  (compartilhada: home, masculino, feminino, barba, sobrancelha, clinica-altamira)
-equipe-dr-edmar-retrato.jpg  →  Dr. Edmar Spindola
-feminino-hero-consulta.jpg  →  Paciente em consulta com o Dr. Edmar Spindola, transplante capilar feminino
-home-caso-01-antes.jpg  →  Antes do transplante capilar
-home-caso-01-depois.jpg  →  12 meses após o transplante capilar
-home-caso-02-antes.jpg  →  Antes do transplante capilar
-home-caso-02-depois.jpg  →  9 meses após o transplante capilar
-home-hero-consulta.jpg  →  Dr. Edmar Spindola em consulta com paciente
-home-hero-explicando.jpg  →  Dr. Edmar Spindola explicando a técnica ao paciente
-home-tratamento-barba.jpg  →  Transplante de barba
-home-tratamento-feminino.jpg  →  Transplante capilar feminino
-home-tratamento-masculino.jpg  →  Transplante capilar masculino
-home-tratamento-sobrancelha.jpg  →  Transplante de sobrancelha
-masculino-hero-consulta.jpg  →  Paciente em consulta com o Dr. Edmar Spindola, transplante capilar masculino
-masculino-prova-caso-01-antes.jpg  →  Antes do transplante capilar, caso 1
-masculino-prova-caso-01-depois.jpg  →  Resultado após o transplante capilar, caso 1
-masculino-prova-caso-02-antes.jpg  →  Antes do transplante capilar, caso 2
-masculino-prova-caso-02-depois.jpg  →  Resultado após o transplante capilar, caso 2
-metodos-dhi-caneta-choi.jpg  →  Caneta implantadora Choi
-metodos-dhi-card.jpg  →  Técnica DHI com caneta implantadora Choi
-metodos-dhi-hero.jpg  →  Detalhe da técnica DHI com caneta implantadora Choi
-metodos-fue-no-shave-card.jpg  →  Técnica FUE No-Shave
-metodos-fue-no-shave-hero.jpg  →  Detalhe da extração de folículos na técnica FUE No-Shave
-metodos-fue-tradicional-card.jpg  →  Técnica FUE Tradicional
-metodos-fue-tradicional-hero.jpg  →  Detalhe da extração de folículos na técnica FUE Tradicional
-sobrancelha-hero-consulta.jpg  →  Paciente em consulta com o Dr. Edmar Spindola, transplante de sobrancelha
-sobre-dr-edmar-spindola-altamira.jpg  →  Dr. Edmar Spindola em Altamira, PA  (compartilhada: home, masculino, feminino, barba, sobrancelha, edmar-spindola)
-sobre-hero-retrato.jpg  →  Dr. Edmar Spindola, retrato profissional
+barba-hero-consulta.webp  →  Paciente em consulta com o Dr. Edmar Spindola, transplante de barba
+blog-o-que-e-tecnica-fue-capa.webp  →  Detalhe da técnica FUE
+blog-o-que-e-tecnica-fue.webp  →  Ilustração sobre a técnica FUE
+blog-quanto-tempo-cabelo-cresce.webp  →  Fases da recuperação do transplante capilar
+blog-transplante-capilar-doi.webp  →  Anestesia no transplante capilar
+blog-transplante-capilar-mulheres.webp  →  Transplante capilar em mulheres
+casos-caso-01-antes.webp  →  Antes do transplante capilar, caso 1
+casos-caso-01-depois.webp  →  Resultado após o transplante capilar, caso 1
+casos-caso-02-antes.webp  →  Antes do transplante capilar, caso 2
+casos-caso-02-depois.webp  →  Resultado após o transplante capilar, caso 2
+casos-caso-03-antes.webp  →  Antes do transplante capilar, caso 3
+casos-caso-03-depois.webp  →  Resultado após o transplante capilar, caso 3
+casos-caso-04-antes.webp  →  Antes do transplante capilar, caso 4
+casos-caso-04-depois.webp  →  Resultado após o transplante capilar, caso 4
+clinica-consulta.webp  →  Sala de consulta  (compartilhada: home, masculino, feminino, barba, sobrancelha, clinica-altamira)
+clinica-equipe.webp  →  Equipe local em Altamira  (compartilhada: home, masculino, feminino, barba, sobrancelha, clinica-altamira)
+clinica-procedimento.webp  →  Sala de procedimento  (compartilhada: home, masculino, feminino, barba, sobrancelha, clinica-altamira)
+clinica-recepcao.webp  →  Recepção da clínica em Altamira  (compartilhada: home, masculino, feminino, barba, sobrancelha, clinica-altamira)
+equipe-dr-edmar-retrato.webp  →  Dr. Edmar Spindola
+feminino-hero-consulta.webp  →  Paciente em consulta com o Dr. Edmar Spindola, transplante capilar feminino
+home-caso-01-antes.webp  →  Antes do transplante capilar
+home-caso-01-depois.webp  →  12 meses após o transplante capilar
+home-caso-02-antes.webp  →  Antes do transplante capilar
+home-caso-02-depois.webp  →  9 meses após o transplante capilar
+home-hero-consulta.webp  →  Dr. Edmar Spindola em consulta com paciente
+home-hero-explicando.webp  →  Dr. Edmar Spindola explicando a técnica ao paciente
+home-tratamento-barba.webp  →  Transplante de barba
+home-tratamento-feminino.webp  →  Transplante capilar feminino
+home-tratamento-masculino.webp  →  Transplante capilar masculino
+home-tratamento-sobrancelha.webp  →  Transplante de sobrancelha
+masculino-hero-consulta.webp  →  Paciente em consulta com o Dr. Edmar Spindola, transplante capilar masculino
+masculino-prova-caso-01-antes.webp  →  Antes do transplante capilar, caso 1
+masculino-prova-caso-01-depois.webp  →  Resultado após o transplante capilar, caso 1
+masculino-prova-caso-02-antes.webp  →  Antes do transplante capilar, caso 2
+masculino-prova-caso-02-depois.webp  →  Resultado após o transplante capilar, caso 2
+metodos-dhi-caneta-choi.webp  →  Caneta implantadora Choi
+metodos-dhi-card.webp  →  Técnica DHI com caneta implantadora Choi
+metodos-dhi-hero.webp  →  Detalhe da técnica DHI com caneta implantadora Choi
+metodos-fue-no-shave-card.webp  →  Técnica FUE No-Shave
+metodos-fue-no-shave-hero.webp  →  Detalhe da extração de folículos na técnica FUE No-Shave
+metodos-fue-tradicional-card.webp  →  Técnica FUE Tradicional
+metodos-fue-tradicional-hero.webp  →  Detalhe da extração de folículos na técnica FUE Tradicional
+sobrancelha-hero-consulta.webp  →  Paciente em consulta com o Dr. Edmar Spindola, transplante de sobrancelha
+sobre-dr-edmar-spindola-altamira.webp  →  Dr. Edmar Spindola em Altamira, PA  (compartilhada: home, masculino, feminino, barba, sobrancelha, edmar-spindola)
+sobre-hero-retrato.webp  →  Dr. Edmar Spindola, retrato profissional

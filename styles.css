@@ -4,7 +4,6 @@
    Tipografia: Fraunces (display) + Outfit (corpo)
    =================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap');
 
 :root {
   --navy-950: #0a1626;
@@ -1164,6 +1163,7 @@ footer { background: var(--navy-950); color: var(--ink-100); padding: 64px 0 28p
 .blog-card-body { padding: 22px 24px; }
 .blog-card-body .cat { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-700); }
 .blog-card-body h3 { margin: 10px 0 8px; font-size: 16.5px; }
+.badge-em-breve { display:inline-block; font-size:12px; font-weight:600; color: var(--ink-300); background: rgba(15,31,53,0.06); padding: 4px 12px; border-radius: var(--radius-pill); }
 .blog-card-body p { font-size: 13.5px; color: var(--ink-300); }
 .blog-card-body a {
   display: inline-flex;

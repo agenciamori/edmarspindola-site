@@ -1,47 +1,4 @@
 User-agent: *
 Allow: /
 
-# Liberação explícita para crawlers de IA (treinamento e busca em tempo real)
-# Site 100% institucional e educativo, sem motivo para restringir indexação por IA
-
-# OpenAI
-User-agent: GPTBot
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-# Anthropic
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-SearchBot
-Allow: /
-
-User-agent: Claude-User
-Allow: /
-
-# Google (token separado do Googlebot de busca, controla uso em treinamento do Gemini)
-User-agent: Google-Extended
-Allow: /
-
-# Perplexity
-User-agent: PerplexityBot
-Allow: /
-
-# Apple
-User-agent: Applebot-Extended
-Allow: /
-
-# Meta
-User-agent: meta-externalagent
-Allow: /
-
-# Common Crawl (base usada por diversos modelos de IA)
-User-agent: CCBot
-Allow: /
-
 Sitemap: https://transplantecapilaraltamira.com.br/sitemap.xml
