@@ -428,7 +428,7 @@ main { padding-top: 78px; }
 .ba-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 3/4;
+  aspect-ratio: 4/3; /* era 3/4 (retrato). Agora paisagem: corta o corpo/rosto abaixo da testa e preserva identidade */
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid rgba(201,161,74,0.3);
@@ -467,7 +467,20 @@ main { padding-top: 78px; }
   color: var(--ink-200);
 }
 /* foto real dentro do ba-side (substitui o ícone/legenda decorativos quando a imagem existe) */
-.ba-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* As fotos de antes/depois já vêm pré-cortadas (formato 4/3, área segura da testa pra cima),
+   então o padrão aqui é centralizar (50%). --ba-focus-y e --ba-scale continuam disponíveis
+   para ajuste fino pontual, via style="--ba-focus-y: 40%" direto na tag <img class="ba-photo">,
+   caso uma foto futura precise de reenquadramento sem precisar recortar o arquivo de novo. */
+.ba-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% var(--ba-focus-y, 50%);
+  transform: scale(var(--ba-scale, 1));
+  transform-origin: 50% var(--ba-focus-y, 50%);
+}
 .ba-before { clip-path: inset(0 50% 0 0); }
 
 /* hero: slider quase fechado, mostrando quase só a foto principal */
@@ -608,7 +621,7 @@ main { padding-top: 78px; }
 .filter-pill.on-light.active { background: var(--gold-500); border-color: var(--gold-500); color: var(--navy-950); }
 
 .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px 32px; }
-.case-card .ba-frame { aspect-ratio: 3/4; }
+.case-card .ba-frame { aspect-ratio: 4/3; } /* sincronizado com o .ba-frame base — ver seção "before/after slider" */
 .case-meta { margin-top: 16px; }
 .case-meta h3 { font-size: 16.5px; color: var(--cream); margin-bottom: 6px; }
 .case-meta p { font-size: 13px; color: var(--ink-100); line-height: 1.6; }
