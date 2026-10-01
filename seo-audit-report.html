@@ -1,0 +1,427 @@
+<!doctype html><title>Auditoria SEO — Altamira</title>
+<style>
+:root{
+  /* Layout: single-column report with a sticky progress rail; dark charcoal + gold, echoing the client's own site palette */
+  --bg:#f7f5f0;
+  --surface:#ffffff;
+  --surface-2:#f0ece2;
+  --ink:#1c1a17;
+  --ink-soft:#5c574d;
+  --line:#e2ddd0;
+  --gold:#a9802f;
+  --gold-soft:#f1e6cc;
+  --crit:#b3261e;
+  --crit-soft:#fbe6e4;
+  --high:#9a5b00;
+  --high-soft:#fbead1;
+  --med:#6b5e00;
+  --med-soft:#f5f0cf;
+  --low:#2f6b4f;
+  --low-soft:#e3f0e8;
+  --pass:#2f6b4f;
+  --pass-soft:#e3f0e8;
+  --warn:#9a5b00;
+  --warn-soft:#fbead1;
+  --fail:#b3261e;
+  --fail-soft:#fbe6e4;
+  --font-display:'Fraunces',Georgia,'Times New Roman',serif;
+  --font-body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15130f;
+    --surface:#1d1a15;
+    --surface-2:#242019;
+    --ink:#f3efe4;
+    --ink-soft:#b8b0a0;
+    --line:#352f26;
+    --gold:#d8ac4f;
+    --gold-soft:#332a16;
+    --crit:#ff8a80;
+    --crit-soft:#3a1915;
+    --high:#f5bd6b;
+    --high-soft:#3a2a0f;
+    --med:#e5d770;
+    --med-soft:#333014;
+    --low:#8fd1ae;
+    --low-soft:#132a1f;
+    --pass:#8fd1ae; --pass-soft:#132a1f;
+    --warn:#f5bd6b; --warn-soft:#3a2a0f;
+    --fail:#ff8a80; --fail-soft:#3a1915;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15130f; --surface:#1d1a15; --surface-2:#242019; --ink:#f3efe4; --ink-soft:#b8b0a0; --line:#352f26;
+  --gold:#d8ac4f; --gold-soft:#332a16;
+  --crit:#ff8a80; --crit-soft:#3a1915;
+  --high:#f5bd6b; --high-soft:#3a2a0f;
+  --med:#e5d770; --med-soft:#333014;
+  --low:#8fd1ae; --low-soft:#132a1f;
+  --pass:#8fd1ae; --pass-soft:#132a1f;
+  --warn:#f5bd6b; --warn-soft:#3a2a0f;
+  --fail:#ff8a80; --fail-soft:#3a1915;
+  color-scheme:dark;
+}
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.55;-webkit-font-smoothing:antialiased}
+body{padding-inline:16px}
+img{max-width:100%}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;text-wrap:balance;margin:0}
+a{color:var(--gold)}
+.wrap{max-width:980px;margin:0 auto}
+
+/* ---------- Header ---------- */
+.masthead{padding-block:48px 28px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;gap:10px;align-items:center}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--gold)}
+.masthead h1{font-size:clamp(28px,4.4vw,44px);line-height:1.08;max-width:18ch}
+.masthead .sub{margin-top:14px;color:var(--ink-soft);font-size:16px;max-width:62ch}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.meta-chip{font-family:var(--font-mono);font-size:12px;color:var(--ink-soft);background:var(--surface-2);border:1px solid var(--line);border-radius:100px;padding:6px 12px}
+
+/* ---------- Progress rail ---------- */
+.progress-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.progress-inner{max-width:980px;margin:0 auto;padding:10px 0;display:flex;align-items:center;gap:16px}
+.progress-track{flex:1;height:8px;border-radius:100px;background:var(--surface-2);overflow:hidden;min-width:0}
+.progress-fill{height:100%;background:var(--gold);border-radius:100px;transition:width .3s ease;width:0%}
+.progress-label{font-family:var(--font-mono);font-size:12px;color:var(--ink-soft);white-space:nowrap}
+.reset-btn{font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--ink-soft);background:none;border:1px solid var(--line);border-radius:100px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+.reset-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ---------- Sections ---------- */
+section{padding-block:40px;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+.section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:20px}
+.section-num{font-family:var(--font-mono);font-size:13px;color:var(--gold)}
+section h2{font-size:clamp(20px,2.6vw,26px)}
+.lede{color:var(--ink-soft);max-width:68ch;margin-bottom:24px;font-size:15px}
+
+/* ---------- Summary callout ---------- */
+.summary-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:grid;gap:18px}
+.summary-card p{margin:0;max-width:72ch}
+.verdict-row{display:flex;flex-wrap:wrap;gap:10px}
+.verdict{font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;padding:7px 14px;border-radius:100px;font-weight:500}
+.verdict.good{background:var(--pass-soft);color:var(--pass)}
+.verdict.watch{background:var(--warn-soft);color:var(--warn)}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:6px}
+.stat{background:var(--surface);padding:18px}
+.stat .n{font-family:var(--font-display);font-size:28px;font-weight:700;font-variant-numeric:tabular-nums}
+.stat .l{font-size:12px;color:var(--ink-soft);margin-top:2px}
+.stat.crit .n{color:var(--crit)}
+.stat.good .n{color:var(--pass)}
+
+/* ---------- Tables ---------- */
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px;background:var(--surface)}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);background:var(--surface-2);white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+
+.pill{display:inline-block;font-family:var(--font-mono);font-size:11px;font-weight:500;padding:3px 9px;border-radius:100px;white-space:nowrap}
+.pill.critical{background:var(--crit-soft);color:var(--crit)}
+.pill.high{background:var(--high-soft);color:var(--high)}
+.pill.media{background:var(--med-soft);color:var(--med)}
+.pill.baixa{background:var(--low-soft);color:var(--low)}
+.pill.pass{background:var(--pass-soft);color:var(--pass)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.fail{background:var(--fail-soft);color:var(--fail)}
+
+/* ---------- Checklist action items ---------- */
+.action-group{margin-bottom:10px}
+.action-group h3{font-size:16px;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.group-count{font-family:var(--font-mono);font-size:12px;color:var(--ink-soft);font-weight:400}
+.action-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.action-item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:border-color .15s ease}
+.action-item:hover{border-color:var(--gold)}
+.action-item input[type=checkbox]{appearance:none;width:19px;height:19px;flex:none;margin-top:2px;border:1.5px solid var(--ink-soft);border-radius:5px;position:relative;cursor:pointer}
+.action-item input[type=checkbox]:checked{background:var(--gold);border-color:var(--gold)}
+.action-item input[type=checkbox]:checked::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:9px;border:solid var(--surface);border-width:0 2px 2px 0;transform:rotate(40deg)}
+.action-body{min-width:0;flex:1}
+.action-title{font-weight:600;font-size:14.5px}
+.action-item.done .action-title{text-decoration:line-through;color:var(--ink-soft)}
+.action-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-soft);background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:2px 7px}
+.action-desc{color:var(--ink-soft);font-size:13px;margin-top:6px}
+
+/* ---------- competitor compare ---------- */
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.vs-col{background:var(--surface);padding:20px}
+.vs-col h3{font-size:15px;margin-bottom:2px}
+.vs-col .url{font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);word-break:break-all}
+.vs-col .win{color:var(--pass);font-family:var(--font-mono);font-size:11px;margin-top:10px;display:block}
+.vs-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.vs-row:first-of-type{border-top:none}
+.vs-cell{background:var(--surface);padding:14px 20px;font-size:13.5px}
+.vs-cell .k{font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);display:block;margin-bottom:4px}
+
+footer{padding-block:32px 60px;text-align:center}
+footer p{color:var(--ink-soft);font-size:12.5px;font-family:var(--font-mono)}
+
+@media (max-width:620px){
+  .vs-grid,.vs-row{grid-template-columns:1fr}
+  table{min-width:540px}
+}
+</style>
+
+<div class="progress-bar">
+  <div class="progress-inner wrap">
+    <span class="progress-label" id="progress-label">0/0 ações concluídas</span>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    <button class="reset-btn" id="reset-btn" type="button">Reiniciar</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="eyebrow">Auditoria de SEO</div>
+  <h1>transplantecapilaraltamira.com.br</h1>
+  <p class="sub">Dr. Edmar Spindola — Transplante Capilar, Altamira/PA. SEO técnico, on-page, conteúdo e comparativo competitivo, com plano de execução marcável abaixo.</p>
+  <div class="meta-row">
+    <span class="meta-chip">01 out 2026</span>
+    <span class="meta-chip">Auditado ao vivo via navegador</span>
+    <span class="meta-chip">17 páginas verificadas</span>
+  </div>
+</header>
+
+<section id="resumo">
+  <div class="section-head"><span class="section-num">01</span><h2>Resumo executivo</h2></div>
+  <div class="summary-card">
+    <p>O site tem uma <strong>base técnica e on-page muito acima da média</strong> para uma clínica local: títulos e meta descriptions bem escritos, URLs limpas, hierarquia de cabeçalhos correta, alt text em 100% das imagens, schema markup, sitemap e robots.txt configurados, HTTPS e layout responsivo. Isso coloca o site à frente do concorrente que hoje ocupa a posição #1 orgânica — uma página única em Wix com 371 palavras.</p>
+    <p>Apesar disso, o site <strong>perde o primeiro lugar orgânico</strong> para esse concorrente local e tem uma lacuna de conteúdo severa: a home promete 3 posts de blog, mas só 1 existe — e os outros 2 cards carregam imagens quebradas. Há também um <strong>erro nos dados estruturados</strong>: o schema declara 1 avaliação, enquanto o Perfil da Empresa no Google mostra 5,0★ com 8 avaliações reais.</p>
+    <div class="verdict-row">
+      <span class="verdict good">Base técnica: forte</span>
+      <span class="verdict watch">Conteúdo: lacuna crítica</span>
+      <span class="verdict watch">Dados estruturados: correção necessária</span>
+    </div>
+    <div class="stat-grid">
+      <div class="stat good"><div class="n">#2</div><div class="l">posição orgânica<br>termo principal</div></div>
+      <div class="stat good"><div class="n">5,0★</div><div class="l">GBP real<br>(8 avaliações)</div></div>
+      <div class="stat crit"><div class="n">1/3</div><div class="l">posts de blog<br>publicados</div></div>
+      <div class="stat crit"><div class="n">3</div><div class="l">imagens<br>quebradas (404)</div></div>
+      <div class="stat"><div class="n">2,36MB</div><div class="l">peso da<br>página inicial</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="tecnico">
+  <div class="section-head"><span class="section-num">02</span><h2>Checklist técnico</h2></div>
+  <p class="lede">Verificado ao vivo em outubro/2026: robots.txt, sitemap.xml, indexação no Google, canonical tags, dados estruturados e performance.</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Verificação</th><th>Status</th><th>Detalhes</th></tr></thead>
+      <tbody>
+        <tr><td>HTTPS</td><td><span class="pill pass">Pass</span></td><td>Certificado ativo, sem conteúdo misto</td></tr>
+        <tr><td>robots.txt</td><td><span class="pill pass">Pass</span></td><td>Permite crawl total, referencia o sitemap</td></tr>
+        <tr><td>sitemap.xml</td><td><span class="pill warn">Atenção</span></td><td>18 URLs presentes, mas nenhuma com <code>&lt;lastmod&gt;</code></td></tr>
+        <tr><td>Indexação no Google</td><td><span class="pill pass">Pass</span></td><td>Confirmada via <code>site:</code> — 8+ páginas indexadas</td></tr>
+        <tr><td>Canonical tags</td><td><span class="pill pass">Pass</span></td><td>Presentes e corretos em todas as páginas testadas</td></tr>
+        <tr><td>Redirecionamento de URL</td><td><span class="pill pass">Pass</span></td><td><code>/masculino</code> normaliza para <code>/masculino/</code> corretamente</td></tr>
+        <tr><td>Mobile-friendly</td><td><span class="pill pass">Pass</span></td><td>Layout responsivo testado em 375px, CTA e WhatsApp flutuante bem posicionados</td></tr>
+        <tr><td>H1 único por página</td><td><span class="pill pass">Pass</span></td><td>Confirmado nas 17 páginas verificadas</td></tr>
+        <tr><td>Alt text em imagens</td><td><span class="pill pass">Pass</span></td><td>20/20 imagens da home com alt descritivo</td></tr>
+        <tr><td>Imagens quebradas</td><td><span class="pill fail">Falha</span></td><td>3 thumbnails do blog retornando 404</td></tr>
+        <tr><td>Peso de página / imagens</td><td><span class="pill warn">Atenção</span></td><td>Home com 2,36MB; hero sozinho com 507KB, logo PNG com 148KB</td></tr>
+        <tr><td>Dados estruturados (Schema.org)</td><td><span class="pill warn">Atenção</span></td><td>Presente (Physician, FAQPage, BreadcrumbList, MedicalBusiness), mas <code>reviewCount</code> incorreto</td></tr>
+        <tr><td>FAQ schema</td><td><span class="pill warn">Atenção</span></td><td>Só em <code>/perguntas-frequentes</code>; ausente nas páginas de método</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="onpage">
+  <div class="section-head"><span class="section-num">03</span><h2>Problemas on-page</h2></div>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Página</th><th>Problema</th><th>Severidade</th><th>Correção recomendada</th></tr></thead>
+      <tbody>
+        <tr><td>Home — seção "Do blog"</td><td>3 imagens de thumbnail retornando 404</td><td><span class="pill critical">Crítico</span></td><td>Subir as imagens faltantes ou remover os cards quebrados</td></tr>
+        <tr><td>Home — seção "Do blog"</td><td>2 dos 3 cards de post sem link — levam a conteúdo inexistente</td><td><span class="pill critical">Crítico</span></td><td>Publicar os posts ou remover os cards até existirem</td></tr>
+        <tr><td>Schema Physician (home)</td><td><code>reviewCount: "1"</code> não bate com os 8 reviews reais do GBP</td><td><span class="pill critical">Crítico</span></td><td>Atualizar o JSON-LD ou remover <code>aggregateRating</code> do schema</td></tr>
+        <tr><td>Home</td><td>Hero com 507KB e logo PNG com 148KB, sem WebP/SVG otimizado</td><td><span class="pill high">Alta</span></td><td>Comprimir hero para &lt;150KB; converter logo para SVG/WebP</td></tr>
+        <tr><td>sitemap.xml</td><td>Nenhuma URL com <code>lastmod</code></td><td><span class="pill media">Média</span></td><td>Adicionar <code>lastmod</code>, priorizando o blog</td></tr>
+        <tr><td>/blog</td><td>Apenas 1 artigo publicado para uma seção anunciada como ativa</td><td><span class="pill high">Alta</span></td><td>Ver plano de conteúdo, seção 05</td></tr>
+        <tr><td>/masculino, /feminino, /barba, /sobrancelha</td><td>Só têm schema BreadcrumbList; sem MedicalProcedure/Service</td><td><span class="pill media">Média</span></td><td>Adicionar schema de procedimento em cada página de tratamento</td></tr>
+        <tr><td>/metodos/*</td><td>Sem FAQ schema apesar de conteúdo explicativo rico</td><td><span class="pill baixa">Baixa</span></td><td>Adicionar 2–3 perguntas específicas por técnica com FAQPage</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="conteudo">
+  <div class="section-head"><span class="section-num">04</span><h2>Lacunas de conteúdo</h2></div>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Lacuna</th><th>Por que importa</th><th>Formato</th><th>Prioridade</th></tr></thead>
+      <tbody>
+        <tr><td>Blog com apenas 1 post</td><td>Zero sinal de autoridade/freshness; a home promete conteúdo inexistente</td><td>Completar os 2 posts pendentes + calendário editorial</td><td><span class="pill critical">Alta</span></td></tr>
+        <tr><td>"Preço do transplante capilar em Altamira"</td><td>Agregador (meutratamentocapilar.com.br) já rankeia para essa intenção comercial</td><td>Post sobre fatores que influenciam o valor</td><td><span class="pill critical">Alta</span></td></tr>
+        <tr><td>"Transplante capilar vale a pena"</td><td>Pergunta recorrente em "As pessoas também perguntam"</td><td>Post de blog</td><td><span class="pill critical">Alta</span></td></tr>
+        <tr><td>Causas da queda capilar / diagnóstico não cirúrgico</td><td>Reforça o diferencial único do Dr. Edmar: "diagnóstico antes da indicação"</td><td>Pilar + posts de apoio (cluster)</td><td><span class="pill critical">Alta</span></td></tr>
+        <tr><td>Vídeos de depoimento / mais casos</td><td>Concorrente usa vídeo no Instagram com bom engajamento</td><td>Vídeos curtos nas páginas de tratamento</td><td><span class="pill media">Média</span></td></tr>
+        <tr><td>Página regional (ex: Belém-PA)</td><td>Pacientes de outras cidades do Pará pesquisam por Belém</td><td>Nova landing page regional</td><td><span class="pill media">Média</span></td></tr>
+        <tr><td>FAQ expandido por técnica</td><td>Conteúdo já existe; falta marcação para rich snippet</td><td>FAQPage nas páginas de método</td><td><span class="pill media">Média</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="concorrencia">
+  <div class="section-head"><span class="section-num">05</span><h2>Comparativo com o concorrente direto</h2></div>
+  <p class="lede">Dr. Camilo Denardin opera no mesmo bairro (Esplanada do Xingu) e ocupa hoje a posição #1 orgânica para "transplante capilar Altamira" — à frente do site do Dr. Edmar, apesar de uma presença técnica muito mais simples.</p>
+  <div class="vs-grid">
+    <div class="vs-col"><h3>transplantecapilaraltamira.com.br</h3><span class="url">Dr. Edmar Spindola</span></div>
+    <div class="vs-col"><h3>drcamilodenardin.com.br</h3><span class="url">Concorrente direto</span></div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-cell"><span class="k">Posição orgânica</span>#2</div>
+    <div class="vs-cell"><span class="k">Posição orgânica</span><strong style="color:var(--crit)">#1</strong></div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-cell"><span class="k">Pacote local (Maps)</span><strong style="color:var(--pass)">Único resultado · 5,0★ (8)</strong></div>
+    <div class="vs-cell"><span class="k">Pacote local (Maps)</span>Não aparece</div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-cell"><span class="k">Palavras na home</span>~1.400+</div>
+    <div class="vs-cell"><span class="k">Palavras na home</span>371</div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-cell"><span class="k">Estrutura</span>17 páginas, blog, FAQ, métodos separados</div>
+    <div class="vs-cell"><span class="k">Estrutura</span>Página única (Wix), sem blog</div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-cell"><span class="k">Dados estruturados</span>Physician, FAQPage, BreadcrumbList, MedicalBusiness</div>
+    <div class="vs-cell"><span class="k">Dados estruturados</span>LocalBusiness básico, WebSite</div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-cell"><span class="k">Instagram</span><strong style="color:var(--pass)">+18 mil seguidores</strong></div>
+    <div class="vs-cell"><span class="k">Instagram</span>+3,8 mil seguidores</div>
+  </div>
+  <p class="lede" style="margin-top:20px;margin-bottom:0">Leitura: o site do Dr. Edmar é tecnicamente superior e domina o Mapa/Local Pack, mas perde o primeiro lugar orgânico — provavelmente por sinais de backlinks/idade de domínio que não foram medidos nesta auditoria (nenhuma ferramenta de SEO como Ahrefs/Semrush estava conectada). Recomenda-se conectar uma via <code>/mcp</code> para números reais de autoridade de domínio.</p>
+</section>
+
+<section id="keywords">
+  <div class="section-head"><span class="section-num">06</span><h2>Oportunidades de palavra-chave</h2></div>
+  <p class="lede">Estimativa qualitativa — sem ferramenta de volume de busca conectada nesta sessão.</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Palavra-chave</th><th>Dificuldade</th><th>Oportunidade</th><th>Posição atual</th><th>Intenção</th></tr></thead>
+      <tbody>
+        <tr><td>transplante capilar Altamira</td><td>Baixa</td><td><span class="pill high">Alta</span></td><td>#2 orgânico / #1 local</td><td>Comercial</td></tr>
+        <tr><td>implante capilar Altamira</td><td>Baixa</td><td><span class="pill high">Alta</span></td><td>Não otimizado</td><td>Comercial</td></tr>
+        <tr><td>transplante capilar preço / quanto custa</td><td>Média</td><td><span class="pill high">Alta</span></td><td>Não rankeando</td><td>Comercial</td></tr>
+        <tr><td>quanto tempo demora para o cabelo crescer</td><td>Baixa</td><td><span class="pill high">Alta</span></td><td>Post pendente</td><td>Informacional</td></tr>
+        <tr><td>transplante capilar em mulheres quando indicado</td><td>Baixa</td><td><span class="pill high">Alta</span></td><td>Post pendente</td><td>Informacional</td></tr>
+        <tr><td>clínica de implante capilar perto de mim</td><td>Baixa</td><td><span class="pill high">Alta</span></td><td>Depende do GBP</td><td>Transacional</td></tr>
+        <tr><td>transplante capilar feminino Altamira</td><td>Baixa</td><td><span class="pill media">Média</span></td><td>Página existe e otimizada</td><td>Comercial</td></tr>
+        <tr><td>técnica FUE sem raspar cabeça</td><td>Baixa</td><td><span class="pill media">Média</span></td><td>Já coberto</td><td>Informacional</td></tr>
+        <tr><td>dermatologista tricologista Altamira</td><td>Baixa</td><td><span class="pill media">Média</span></td><td>/edmar-spindola existe</td><td>Navegacional</td></tr>
+        <tr><td>transplante capilar vale a pena</td><td>Média</td><td><span class="pill media">Média</span></td><td>Não coberto</td><td>Informacional</td></tr>
+        <tr><td>calvície feminina tratamento sem cirurgia</td><td>Média</td><td><span class="pill media">Média</span></td><td>Parcial na home</td><td>Informacional</td></tr>
+        <tr><td>transplante capilar Belém PA</td><td>Média</td><td><span class="pill media">Média</span></td><td>Não coberto</td><td>Comercial</td></tr>
+        <tr><td>melhor clínica transplante capilar Pará</td><td>Média</td><td><span class="pill media">Média</span></td><td>Não coberto</td><td>Comercial</td></tr>
+        <tr><td>DHI caneta Choi Altamira</td><td>Baixa</td><td><span class="pill baixa">Baixa</span></td><td>Já coberto</td><td>Informacional</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="acoes">
+  <div class="section-head"><span class="section-num">07</span><h2>Plano de execução</h2></div>
+  <p class="lede">Marque os itens conforme forem concluídos — o progresso fica salvo neste navegador.</p>
+
+  <div class="action-group">
+    <h3>Quick wins <span class="group-count">esta semana</span></h3>
+    <ul class="action-list" data-group="quick"></ul>
+  </div>
+
+  <div class="action-group" style="margin-top:32px">
+    <h3>Investimentos estratégicos <span class="group-count">este trimestre</span></h3>
+    <ul class="action-list" data-group="strategic"></ul>
+  </div>
+</section>
+
+</div>
+
+<footer><p>Auditoria realizada ao vivo via navegador em 01/10/2026 · transplantecapilaraltamira.com.br</p></footer>
+
+<script>
+(function(){
+  var actions = {
+    quick: [
+      {id:"q1", title:"Corrigir reviewCount no schema Physician da home", desc:"Trocar 1 → 8 (ou remover aggregateRating) no JSON-LD. Impacto alto, 10 min.", tags:["Schema","Crítico"]},
+      {id:"q2", title:"Resolver as 3 imagens 404 do blog na home", desc:"Subir as imagens faltantes ou remover os cards sem link até os posts existirem.", tags:["Técnico","Crítico"]},
+      {id:"q3", title:"Comprimir hero e logo da home", desc:"Hero de 507KB e logo PNG de 148KB → WebP otimizado, abaixo de 150KB.", tags:["Performance"]},
+      {id:"q4", title:"Adicionar lastmod ao sitemap.xml", desc:"Ajuda o Google a priorizar o recrawl, principalmente do blog.", tags:["Técnico"]},
+      {id:"q5", title:"Incluir o termo \"implante capilar\" no conteúdo da home", desc:"Sinônimo usado pelo concorrente e por buscadores — adicionar em um H2 e no meta description.", tags:["On-page"]}
+    ],
+    strategic: [
+      {id:"s1", title:"Publicar os 2 posts de blog já anunciados", desc:"\"Quanto tempo leva para o cabelo crescer\" e \"Transplante capilar em mulheres\" — manter ritmo mensal depois.", tags:["Conteúdo","Alto impacto"]},
+      {id:"s2", title:"Construir cluster de conteúdo sobre calvície e diagnóstico", desc:"4–6 posts de apoio reforçando o diferencial \"diagnóstico antes da indicação\".", tags:["Conteúdo","Alto impacto"]},
+      {id:"s3", title:"Otimizar e nutrir o Google Business Profile", desc:"Fotos, posts semanais, categorias e respostas a avaliações — consolidar o Local Pack e mirar o #1 orgânico.", tags:["Local SEO","Alto impacto"]},
+      {id:"s4", title:"Conectar ferramenta de SEO (Ahrefs/Semrush) via /mcp", desc:"Medir backlinks reais e volume de busca — hoje as estimativas são qualitativas.", tags:["Ferramentas"]},
+      {id:"s5", title:"Criar landing page regional (ex: Belém-PA)", desc:"Se o Dr. Edmar aceitar pacientes de fora de Altamira.", tags:["Conteúdo"]},
+      {id:"s6", title:"Adicionar schema MedicalProcedure/Service", desc:"Nas páginas masculino, feminino, barba e sobrancelha.", tags:["Schema"]}
+    ]
+  };
+
+  var STORAGE_KEY = "seo-audit-altamira-progress";
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch(e) { state = {}; }
+
+  function save(){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+  }
+
+  function render(){
+    var total = 0, done = 0;
+    Object.keys(actions).forEach(function(group){
+      var list = document.querySelector('.action-list[data-group="'+group+'"]');
+      list.innerHTML = "";
+      actions[group].forEach(function(item){
+        total++;
+        var checked = !!state[item.id];
+        if (checked) done++;
+        var li = document.createElement("li");
+        li.className = "action-item" + (checked ? " done" : "");
+        li.innerHTML =
+          '<input type="checkbox" id="cb-'+item.id+'" '+(checked ? "checked" : "")+'>' +
+          '<div class="action-body">' +
+            '<label class="action-title" for="cb-'+item.id+'">'+item.title+'</label>' +
+            '<div class="action-desc">'+item.desc+'</div>' +
+            '<div class="action-meta">'+item.tags.map(function(t){return '<span class="tag">'+t+'</span>';}).join("")+'</div>' +
+          '</div>';
+        var cb = li.querySelector("input");
+        cb.addEventListener("change", function(){
+          state[item.id] = cb.checked;
+          save();
+          render();
+        });
+        li.addEventListener("click", function(e){
+          if (e.target.tagName !== "INPUT" && e.target.tagName !== "LABEL"){
+            cb.checked = !cb.checked;
+            cb.dispatchEvent(new Event("change"));
+          }
+        });
+        list.appendChild(li);
+      });
+    });
+    var pct = total ? Math.round((done/total)*100) : 0;
+    document.getElementById("progress-fill").style.width = pct + "%";
+    document.getElementById("progress-label").textContent = done + "/" + total + " ações concluídas";
+  }
+
+  document.getElementById("reset-btn").addEventListener("click", function(){
+    state = {};
+    save();
+    render();
+  });
+
+  render();
+})();
+</script>
