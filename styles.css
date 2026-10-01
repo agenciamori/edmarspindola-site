@@ -675,9 +675,10 @@ main { padding-top: 78px; }
   font-family: var(--serif);
   font-style: italic;
   font-size: clamp(20px, 2.4vw, 26px);
-  color: var(--cream);
+  color: var(--navy-900);
   line-height: 1.5;
 }
+.on-dark .quote-block { color: var(--cream); }
 
 .timeline { display: flex; flex-direction: column; gap: 0; }
 .tl-item { display: grid; grid-template-columns: 100px 1fr; gap: 24px; padding: 26px 0; border-bottom: 1px solid rgba(15,31,53,0.1); }
